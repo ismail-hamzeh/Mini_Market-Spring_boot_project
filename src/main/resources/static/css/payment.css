@@ -1,0 +1,45 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.card{
+    height: 90%;
+    width: 40%;
+}
+.cvc {
+    width: 2.5em;
+    position: absolute;
+}
+
+input {
+    border: none;
+    padding-left: 4px;
+    background-color: #f7f1f1;
+    font-size: 15px;
+}
+
+.footer {
+    background-color: #00BCD4;
+    color: white;
+}
+
+.footer:hover {
+    cursor: pointer;
+    background-color: #0097A7;
+}
+.input-with-icon {
+    position: relative;
+}
+
+.input-with-icon input {
+    padding-right: 30px; /* Adjust the padding as needed to accommodate the icon */
+}
+
+.input-with-icon .icon {
+    position: absolute;
+    top: 50%;
+    right: 10px; /* Adjust the position as needed */
+    transform: translateY(-50%);
+}

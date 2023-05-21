@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmln:th="http://www.thymeleaf.org" xmlns:xmln="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/home.css">
+    <script src="/js/home.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="left-div">
+        <ul>
+            <li><a class="active" href="">Home</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/orders">My Orders</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </div>
+    <div class="right-div">
+        <div class="header"><h1 style="margin: 0">Mini Market</h1></div>
+        <div id="myBtnContainer" class="filter-btns" style="margin-top: 10px; margin-right: 10px">
+            <button class="filter-btn" onclick="filterFunction('all')">Show all</button>
+            <button class="filter-btn" onclick="filterFunction('beverages')">Beverages</button>
+            <button class="filter-btn" onclick="filterFunction('candy')">Candy</button>
+            <button class="filter-btn" onclick="filterFunction('iceCream')">Ice Cream</button>
+        </div>
+
+        <div class="container">
+
+            <div class="grid-container">
+                <div th:each="item : ${items}" th:class="'item ' + ${item.getItem_category()}">
+
+                    <img class="img-centered" th:src="${item.getItem_img()}"/><br>
+                    <output class="item-name" th:text="${item.getItem_name()}"></output><br>
+                    <output id="itemPrice" class="item-price" th:text="'JOD ' + ${item.getItem_price()}"></output>
+
+                    <form th:action="@{/home}" method="post" style="margin-top: 10px;">
+                        <div class="buttonsDiv">
+                            <button type="button" name="decrement" class="decrement"
+                                    style="display: inline; margin-right: 5px; width: 20px" id="decrement">-
+                            </button>
+                            <output style="display: inline;" name="itemQuantity" class="item-quantity"
+                                    id="itemQuantity">0
+                            </output>
+                            <button type="button" name="increment" class="increment"
+                                    style="display: inline; margin-left: 5px; width: 20px" id="increment">+
+                            </button>
+                            <input type="hidden" name="itemId" th:value="${item.getItem_id()}"/>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="footer">
+
+    <form th:action="@{/home}" method="post">
+        <div style="float: left; margin-top: 15px; margin-left: 20px">
+            <div>
+                <h4 style="display: inline">Total quantity: </h4> <input type="hidden" name="totalQuantityInput"
+                                                                         id="totalQuantityInput" value="0">
+                <output id="totalQuantityOutput">0</output>
+            </div>
+            <div style="margin-top: 15px">
+                <h4 style="display: inline">Total price: </h4> <input type="hidden" name="totalPriceInput"
+                                                                      id="totalPriceInput">
+                <output id="totalPriceOutput">0</output>
+            </div>
+        </div>
+            <button class="go-to-payment-button" id="paymentButton" name="paymentButton">Go to payment</button>
+    </form>
+
+</div>
+
+</body>
+</html>

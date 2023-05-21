@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="/css/orders-profile.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<div class="parentDiv">
+
+    <div class="headerDiv">
+        <h1>My Profile</h1>
+    </div>
+
+    <div class="tableDiv">
+
+        <form class="profile-form" th:action="@{/profile}" th:object="${users}" method="post">
+
+            <div>
+                <label for="email" style="display: block">Email Address:</label>
+                <input type="email" id="email" name="email" size="40" th:field="*{email}" disabled/>
+            </div>
+            <br>
+            <div>
+                <label for="firstName" style="display: block">First Name:</label>
+                <input type="text" id="firstName" name="firstName" size="40" th:field="*{firstName}"/>
+            </div>
+            <br>
+            <div>
+                <label for="lastName" style="display: block">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" size="40" th:field="*{lastName}"/>
+            </div>
+            <br>
+            <div>
+                <label for="country" style="display: block">Country:</label>
+                <input type="text" id="country" name="country" size="40" th:field="*{country}"/>
+            </div>
+            <br>
+            <div>
+                <a class="btn btn-danger" th:href="@{/resetPassword}">Change Password</a>
+            </div>
+            <br><br>
+
+            <div>
+                <button class="btn btn-success" type="submit" style="width:150px;">Edit</button>
+            </div>
+            <br>
+        </form>
+
+    </div>
+
+</div>
+</body>
+</html>

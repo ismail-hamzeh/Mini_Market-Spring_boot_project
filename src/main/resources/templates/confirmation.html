@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/payment.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+
+</head>
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <div style="display: flex; height: 50%; align-items: center; justify-content: center;  background-color: #C7C7C7;">
+            <img src="/images/success.png" style="height: 65%; width: 50%; margin-top:20px">
+        </div>
+
+        <div style="display:flex; flex-direction: column; height: 30%; align-items: center; justify-content: center; background-color: #C7C7C7;">
+
+            <h2 style="color: #4f4b4b; margin-bottom:0">Order Completed</h2>
+            <h5 th:text="'Your Order Id: ' + ${orderId}" style="color: #145DA0; margin-top:10px"></h5>
+
+        </div>
+
+        <div style="display: flex; height:20%; align-items: center; justify-content: center; background-color: #C7C7C7;">
+            <a class="btn btn-primary" style="width:40%;" th:href="@{/home}">Home</a>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

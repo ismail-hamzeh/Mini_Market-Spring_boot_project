@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/orders-profile.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<div class="parentDiv">
+    <div class="headerDiv">
+        <h1>My Orders</h1>
+    </div>
+
+    <div class="tableDiv">
+        <table>
+            <tr>
+                <th>Order ID</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+                <th>Date & Time</th>
+                <th></th>
+            </tr>
+
+            <tr th:each="order :${orders}">
+                <td th:text="${order.getOrderId()}"></td>
+                <td th:text="${order.getQuantity()}"></td>
+                <td th:text="${order.getTotalPrice()}"></td>
+                <td th:text="${order.getDateTime()}"></td>
+                <td><a class = "btn btn-danger" th:href = "@{/orders/{id}(id=${order.getOrderId()})}">Delete</a></td>
+            </tr>
+        </table>
+    </div>
+
+    <div th:if="${ordersCount <= 0}" class="buttonDiv">
+        <h3>No orders yet</h3>
+    </div>
+
+    <div th:if="${ordersCount > 0}" class="buttonDiv">
+        <a class="btn btn-danger" th:href="@{/orders/empty-list}">Delete All Orders</a>
+    </div>
+
+    <div class="buttonDiv">
+        <a class="btn btn-success" th:href="@{/home}">New Order</a>
+    </div>
+
+</div>
+</body>
+</html>

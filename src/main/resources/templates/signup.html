@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmln:th="http://www.thymeleaf.org" xmlns:xmln="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign-Up</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="centered">
+        <div class="imgDiv" >
+            <img alt="login form" src="/images/1.png"/>
+        </div>
+
+        <div class="formDiv" autofocus="autofocus">
+            <form th:action="@{/signup}" th:object="${user}" method="post">
+
+                <h1 style="letter-spacing: 2px;">Sign-Up</h1>
+
+                <div>
+                    <p th:if="${param.emailExists}" style="font-size: 16px; color: #FF1C19;">Email Already Exists</p>
+                    <div style="display: block;">
+                        <label for="email" style="display: block">Email Address:</label>
+                        <br>
+                        <input type="email" id="email" name="email" th:field="*{email}" size="40"  required />
+                    </div>
+                    <br><br>
+                    <div style="display: block;">
+                        <label for="firstName" style="display: block">First Name:</label>
+                        <br>
+                        <input type="text" id="firstName" name="firstName" th:field="*{firstName}" size="40" required />
+                    </div>
+                    <br><br>
+                    <div style="display: block;">
+                        <label  for="lastName" style="display: block">Last Name:</label>
+                        <br>
+                        <input type="text" id="lastName" name="lastName" th:field="*{lastName}" size="40" required/>
+                    </div>
+                    <br><br>
+                    <div style="display: block;">
+                        <label for="password" style="display: block">Password:</label>
+                        <br>
+                        <input type="password" id="password" name="password" th:field="*{password}"  size="40" required/>
+                    </div>
+                    <br><br>
+                    <div style="display: block;">
+                        <label for="country" style="display: block">Country:</label>
+                        <br>
+                        <input type="text" id="country" name="country" th:field="*{country}" size="40" required/>
+                    </div>
+                </div>
+                <br><br>
+                <div>
+                    <button type="submit">Sign-Up</button>
+                </div>
+                <p style="color: #393f81;">Already have account?
+                    <a style="color: #393f81;" th:href="@{/login}">Login</a></p>
+            </form>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
